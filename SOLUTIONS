@@ -1,0 +1,38 @@
+function solution(N) {
+   // we will be getting an integer N
+   // we will be turning that integer into its binary form charCodeAt()
+   // we will take that binary form and search for the longest binary gap. this return will be a length. I can turn the binary number into 
+   // an array with toString(), split it at ('1'). splice our the value 1 and return the longest length? 
+   // What are the different ways I can approach searing the length?
+   // 
+   let binary = N.toString(2);
+   let arr = binary.split('1').splice(1,1);
+   let count = 0;
+   for(let i=0; i<arr.length; i++){
+       if(arr[i].length > count){
+           
+           count = arr[i].length
+           }
+   }
+console.log(count, N , arr)
+return (arr.reduce((acc, curr)=> acc + curr) === 0 ? 0 : count;   
+}
+
+
+
+----
+
+function largestBinaryGap(num) {
+  var bin = Math.abs(num).toString(2),
+      finalMax = 0,
+      currentMax;
+  
+  for (var i = 0; i < bin.length; i++) {
+    currentMax = 0;
+    while (bin[i] === "0") {
+      ++currentMax && ++i;
+    }
+    if (bin[i] === '1' ) finalMax = Math.max(finalMax, currentMax);
+  }
+  return finalMax;
+}
